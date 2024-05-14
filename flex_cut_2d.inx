@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Flex Cut 2D</name>
+
+
+  <id>net.hubbart.makerscripts.flexcut2d</id>
+
+  <param
+    name="units"
+    gui-text="Units of measure:"
+    gui-description="The units to use for distances."
+    type="optiongroup"
+    appearance="combo">
+    <option value="mm">mm</option>
+    <option value="cm">cm</option>
+    <option value="in">in</option>
+    <option value="pt">pt</option>
+    <option value="px">px</option>
+    <option value="pc">pc</option>
+  </param>
+
+  <param
+    name="size"
+    gui-text="Size of spirals:"
+    gui-description="At least this many slits end-to-end. For symetrical cuts, rows that cut to the edge will have one extra slit."
+    min="1" max="100"
+    type="int">4</param>
+
+  <param 
+    name="gap"
+    gui-text="Minimum gap between cut parts:"
+    gui-description="Smallest allowed distance between cuts. Calculated value will likely be slightly larger, and depends on how the distance gets divided."
+    min="1" max="1000" precision="3"
+    type="float">4</param>
+
+	<param
+    name="width"
+    gui-text="Segments wide:"
+    gui-description="Number of segments across width."
+    min="1" max="100"
+    type="int">5</param>
+
+  <param
+    name="height"
+    gui-text="Segments high:"
+    gui-description="Number of segments over height."
+    min="1" max="100"
+    type="int">5</param>
+
+  <param
+    name="shape"
+    gui-text="Spiral shape:"
+    gui-description="Shape of the spiral segments."
+    type="optiongroup"
+    appearance="combo">
+      <option value="square">Square</option>
+      <option value="hex">Hexagon</option>
+      <option value="round">Round</option>
+  </param>
+
+
+
+  <effect>
+    <!--object-type>path</object-type-->
+    <effects-menu>
+      <submenu name="MakerScripts"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">flex_cut_2d.py</command>
+  </script>
+</inkscape-extension>

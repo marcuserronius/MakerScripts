@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Flex Cut 1D</name>
+
+
+  <id>net.hubbart.makerscripts.flexcut1d</id>
+
+    <hbox>
+  <param
+    name="orientation"
+    gui-text="Orientation:"
+    gui-description="Controls whether the cuts are oriented vertically or horizontally. May be affected by transformations on the original element."
+    type="optiongroup"
+    appearance="radio">
+      <option value="h">Horizontal</option>
+      <option value="v">Vertical</option>
+  </param>
+    </hbox>
+
+  <param
+    name="units"
+    gui-text="Units of measure:"
+    gui-description="The units to use for distances."
+    type="optiongroup"
+    appearance="combo">
+    <option value="mm">mm</option>
+    <option value="cm">cm</option>
+    <option value="in">in</option>
+    <option value="pt">pt</option>
+    <option value="px">px</option>
+    <option value="pc">pc</option>
+  </param>
+
+  <param
+    name="slitcount"
+    gui-text="Minimum slits per row:"
+    gui-description="At least this many slits end-to-end. For symetrical cuts, rows that cut to the edge will have one extra slit."
+    min="1" max="100"
+    type="int">4</param>
+
+  <param 
+    name="stripwidth"
+    gui-text="Minimum strip width:"
+    gui-description="Smallest allowed distance between parallel cuts. Calculated value will likely be slightly larger, and depends on how the distance gets divided."
+    min="0.01" max="1000" precision="3"
+    type="float">4</param>
+
+  <param
+    name="gaplen"
+    gui-text="Gap between slits:"
+    gui-description="Distance between the ends of two consecutive slits."
+    min="0.01" max="100" precision="3"
+    type="float">3</param>
+    
+  <param
+    name="offset"
+    gui-text="Offset:"
+    gui-description="For slits that aren't straight lines, how far it should go sideways."
+    min="0" max="100" precision="3"
+    type="float">0</param>
+
+  <param
+    name="shape"
+    gui-text="Slit shape:"
+    gui-description="If 'Offset' is not zero, controls what shape the slit should be."
+    type="optiongroup"
+    appearance="combo">
+      <option value="plain">Plain</option>
+      <option value="angle">Angle</option>
+      <option value="wave">Wave</option>
+  </param>
+
+  <param
+    name="cutedge"
+    gui-text="First cut to edge"
+    gui-description="Controls whether the first slit hits the edge or has a gap."
+    type="bool">True</param>
+
+  <param
+    name="symmetrical"
+    gui-text="Symmetrical cuts"
+    gui-description="Controls whether a cut should be symmetrical where the slits reach an edge."
+    type="bool">True</param>
+
+  <effect>
+    <!--object-type>path</object-type-->
+    <effects-menu>
+      <submenu name="MakerScripts"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">flex_cut_1d.py</command>
+  </script>
+</inkscape-extension>
