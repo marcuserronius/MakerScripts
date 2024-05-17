@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Flex Cut Button</name>
+
+
+  <id>net.hubbart.makerscripts.flexcutbutton</id>
+
+  <param
+    name="units"
+    gui-text="Units of measure:"
+    gui-description="The units to use for distances."
+    type="optiongroup"
+    appearance="combo">
+    <option value="mm">mm</option>
+    <option value="cm">cm</option>
+    <option value="in">in</option>
+    <option value="pt">pt</option>
+    <option value="px">px</option>
+    <option value="pc">pc</option>
+  </param>
+
+  <param
+    name="turns"
+    gui-text="Number of turns:"
+    gui-description="Number of turns each spiral cut will make. More turns is more flexible."
+    min="0.2" max="30"
+    type="float">1.5</param>
+
+  <param
+    name="cuts"
+    gui-text="Number of cuts:"
+    gui-description="Number of spiral cuts. More cuts might be more flexible, or more sturdy."
+    min="1" max="50"
+    type="int">3</param>
+
+  <param 
+    name="gap"
+    gui-text="Distance between cuts:"
+    gui-description="Smallest allowed distance between cuts."
+    min="0.01" max="1000" precision="3"
+    type="float">3</param>
+
+  <param
+    name="shape"
+    gui-text="Spiral shape:"
+    gui-description="Shape of the spiral cuts."
+    type="optiongroup"
+    appearance="combo">
+      <option value="square">Square</option>
+      <option value="hex">Hexagon</option>
+      <option value="round">Round</option>
+  </param>
+
+
+
+  <effect>
+    <effects-menu>
+      <submenu name="MakerScripts"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">flex_cut_button.py</command>
+  </script>
+</inkscape-extension>
